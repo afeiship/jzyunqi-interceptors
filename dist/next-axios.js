@@ -12,6 +12,7 @@
 
   var Axios = nx.declare('nx.Axios', {
     methods: {
+      axios:axios,
       init: function () {
         this.setDefaults();
         this.setHeaders();
@@ -57,6 +58,9 @@
       },
       isSuccess: function (inResponse) {
         return !inResponse.errorCode;
+      },
+      all : function(inOptions){
+        return axios.all(inOptions);
       },
       post: function (inName, inData) {
         return axios.post(inName, nx.param(inData));
