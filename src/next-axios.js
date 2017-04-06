@@ -1,5 +1,6 @@
-(function (global) {
+(function () {
 
+  var global = window || this;
   var nx = global.nx || require('next-js-core2');
   var axios = global.axios || require('axios');
   var Q = global.Q || require('q');
@@ -73,4 +74,4 @@
     module.exports = Axios;
   }
 
-}(this));
+}());
