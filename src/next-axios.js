@@ -41,10 +41,8 @@
         var self = this;
         axios.interceptors.response.use(function (response) {
           return self.success(response);
-        }, function (response) {
-          var defer = Q.defer();
-          self.error(response);
-          return defer.promise;
+        }, function (error) {
+          return self.error(error);
         });
       },
       success: function (inResponse) {
@@ -59,7 +57,7 @@
       isSuccess: function (inResponse) {
         return !inResponse.errorCode;
       },
-      all : function(inOptions){
+      all: function(inOptions){
         return axios.all(inOptions);
       },
       post: function (inName, inData) {
