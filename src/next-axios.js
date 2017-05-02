@@ -42,7 +42,8 @@
         axios.interceptors.response.use(function (response) {
           return self.success(response);
         }, function (error) {
-          return self.error(error);
+          self.error(error);
+          nx.error(error);
         });
       },
       success: function (inResponse) {
