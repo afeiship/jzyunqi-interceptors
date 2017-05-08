@@ -21,7 +21,7 @@
       setDefaults: function (inOptions) {
         //baseUrl/timeout
         var options = inOptions || {
-            baseUrl: './',
+            baseURL: './',
             timeout: 30000
           };
         nx.mix(axios.defaults, options);
