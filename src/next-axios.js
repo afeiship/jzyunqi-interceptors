@@ -5,11 +5,6 @@
   var axios = global.axios || require('axios');
   var Q = global.Q || require('q');
 
-  //shim require.finally:
-  if (typeof module !== 'undefined' && module.exports) {
-    require('promise.prototype.finally').shim();
-  }
-
   var Axios = nx.declare('nx.Axios', {
     methods: {
       axios:axios,

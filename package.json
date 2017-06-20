@@ -26,7 +26,6 @@
   "dependencies": {
     "axios": "^0.15.3",
     "next-js-core2": "github:afeiship/next-js-core2",
-    "promise.prototype.finally": "^2.0.1",
     "q": "^1.5.0"
   }
 }
