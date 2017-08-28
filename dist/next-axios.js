@@ -1,6 +1,6 @@
 (function () {
 
-  var global = window || this;
+  var global = global || this || self || window;
   var nx = global.nx || require('next-js-core2');
   var axios = global.axios || require('axios');
   var Q = global.Q || require('q');
