@@ -25,7 +25,6 @@
         var options = inOptions || {};
         nx.mix(axios.defaults.headers, inOptions, {
           common: nx.mix({
-            'Power-By': 'afeiship/next-afeiship',
             'Content-Type': 'application/x-www-form-urlencoded'
           }, options.common)
         });
