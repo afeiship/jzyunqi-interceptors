@@ -55,6 +55,9 @@
       all: function(inOptions){
         return axios.all(inOptions);
       },
+      request: function (inOptions) {
+        return axios.request(inOptions);
+      },
       post: function (inName, inData) {
         return axios.post(inName, nx.param(inData));
       },
