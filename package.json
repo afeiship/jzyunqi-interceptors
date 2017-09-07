@@ -1,6 +1,6 @@
 {
   "name": "next-axios",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Axios common features based on next toolkit.",
   "homepage": "https://github.com/afeiship/next-axios",
   "author": {
