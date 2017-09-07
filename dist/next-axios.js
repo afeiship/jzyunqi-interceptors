@@ -4,6 +4,7 @@
   var nx = global.nx || require('next-js-core2');
   var axios = global.axios || require('axios');
   var Q = global.Q || require('q');
+  var _ = require('next-param');
 
   var Axios = nx.declare('nx.Axios', {
     methods: {
@@ -40,6 +41,9 @@
           nx.error(error);
         });
       },
+      transformParam: function(inData){
+        return nx.param(inData);
+      },
       success: function (inResponse) {
         return this.toData(inResponse);
       },
@@ -59,7 +63,7 @@
         return axios.request(inOptions);
       },
       post: function (inName, inData) {
-        return axios.post(inName, nx.param(inData));
+        return axios.post(inName, this.transformParam(inData));
       },
       get: function (inName, inData) {
         return axios.get(inName, {
@@ -67,19 +71,19 @@
         });
       },
       delete: function (inName, inData) {
-        return axios.delete(inName, nx.param(inData));
+        return axios.delete(inName, this.transformParam(inData));
       },
       put: function (inName, inData) {
-        return axios.put(inName, nx.param(inData));
+        return axios.put(inName, this.transformParam(inData));
       },
       patch: function (inName, inData) {
-        return axios.patch(inName, nx.param(inData));
+        return axios.patch(inName, this.transformParam(inData));
       },
       head: function (inName, inData) {
-        return axios.head(inName, nx.param(inData));
+        return axios.head(inName, this.transformParam(inData));
       },
       options: function (inName, inData) {
-        return axios.options(inName, nx.param(inData));
+        return axios.options(inName, this.transformParam(inData));
       }
     }
   });
