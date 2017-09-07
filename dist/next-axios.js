@@ -62,6 +62,21 @@
         return axios.get(inName, {
           params: inData
         });
+      },
+      delete: function (inName, inData) {
+        return axios.delete(inName, nx.param(inData));
+      },
+      put: function (inName, inData) {
+        return axios.put(inName, nx.param(inData));
+      },
+      patch: function (inName, inData) {
+        return axios.patch(inName, nx.param(inData));
+      },
+      head: function (inName, inData) {
+        return axios.head(inName, nx.param(inData));
+      },
+      options: function (inName, inData) {
+        return axios.options(inName, nx.param(inData));
       }
     }
   });
