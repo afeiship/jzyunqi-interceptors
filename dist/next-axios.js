@@ -26,7 +26,7 @@
         var options = inOptions || {};
         nx.mix(axios.defaults.headers, inOptions, {
           common: nx.mix({
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': this.contentType()
           }, options.common)
         });
       },
@@ -43,6 +43,9 @@
       },
       transformParam: function(inData){
         return nx.param(inData);
+      },
+      contentType: function(){
+        return 'application/x-www-form-urlencoded';
       },
       success: function (inResponse) {
         return this.toData(inResponse);
