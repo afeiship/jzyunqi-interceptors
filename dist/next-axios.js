@@ -12,6 +12,7 @@
       init: function () {
         this.setDefaults();
         this.setHeaders();
+        this.setRequestInterceptor();
         this.setResponseInterceptor();
       },
       setDefaults: function (inOptions) {
