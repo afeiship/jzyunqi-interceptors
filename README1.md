@@ -11,4 +11,4 @@
 + https://github.com/kriskowal/q
 
 ## todos:
-- [ ] todo list..
+- [ ] next-axios transformParam: when get/post/ and different API name
