@@ -25,10 +25,15 @@
       },
       setHeaders: function (inOptions) {
         var options = inOptions || {};
+        var defaults = {
+          'Content-Type': this.contentType()
+        };
         nx.mix(axios.defaults.headers, inOptions, {
-          common: nx.mix({
-            'Content-Type': this.contentType()
-          }, options.common)
+          common: nx.mix(defaults, options.common),
+          post: nx.mix(defaults, options.post),
+          put: nx.mix(defaults, options.put),
+          delete: nx.mix(defaults, options.delete),
+          patch: nx.mix(defaults, options.patch),
         });
       },
       setRequestInterceptor: function () {
