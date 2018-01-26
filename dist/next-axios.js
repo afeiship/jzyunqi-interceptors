@@ -7,7 +7,7 @@
   //just require it:
   require('next-param');
 
-  var Axios = nx.declare('nx.Axios', {
+  var NxAxios = nx.declare('nx.Axios', {
     methods: {
       axios:axios,
       init: function () {
@@ -98,7 +98,7 @@
 
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = Axios;
+    module.exports = NxAxios;
   }
 
 }());
