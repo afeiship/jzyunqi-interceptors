@@ -3,8 +3,9 @@
   var global = global || this || self || window;
   var nx = global.nx || require('next-js-core2');
   var axios = global.axios || require('axios');
-  var Q = global.Q || require('q');
-  var _ = require('next-param');
+
+  //just require it:
+  require('next-param');
 
   var Axios = nx.declare('nx.Axios', {
     methods: {
@@ -25,9 +26,7 @@
       },
       setHeaders: function (inOptions) {
         var options = inOptions || {};
-        var defaults = {
-          'Content-Type': this.contentType()
-        };
+        var defaults = { 'Content-Type': this.contentType() };
         nx.mix(axios.defaults.headers, inOptions, {
           common: nx.mix(defaults, options.common),
           post: nx.mix(defaults, options.post),
