@@ -12,3 +12,4 @@
 
 ## todos:
 - [ ] next-axios transformParam: when get/post/ and different API name
++ [ ] transformParam: remove nx.param default

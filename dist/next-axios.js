@@ -29,6 +29,7 @@
         var defaults = { 'Content-Type': this.contentType() };
         nx.mix(axios.defaults.headers, inOptions, {
           common: nx.mix(defaults, options.common),
+          get: nx.mix(defaults, options.get),
           post: nx.mix(defaults, options.post),
           put: nx.mix(defaults, options.put),
           delete: nx.mix(defaults, options.delete),
@@ -70,28 +71,25 @@
       request: function (inOptions) {
         return axios.request(inOptions);
       },
-      post: function (inName, inData) {
-        return axios.post(inName, this.transformParam(inData));
-      },
-      get: function (inName, inData) {
+      get: function (inName, inData, inConfig) {
         return axios.get(inName, {
           params: inData
-        });
+        }, inConfig);
       },
-      delete: function (inName, inData) {
-        return axios.delete(inName, this.transformParam(inData));
+      delete: function (inName, inData, inConfig) {
+        return axios.delete(inName, this.transformParam(inData), inConfig);
       },
-      put: function (inName, inData) {
-        return axios.put(inName, this.transformParam(inData));
+      head: function (inName, inData, inConfig) {
+        return axios.head(inName, this.transformParam(inData), inConfig);
       },
-      patch: function (inName, inData) {
-        return axios.patch(inName, this.transformParam(inData));
+      post: function (inName, inData, inConfig) {
+        return axios.post(inName, this.transformParam(inData), inConfig);
       },
-      head: function (inName, inData) {
-        return axios.head(inName, this.transformParam(inData));
+      put: function (inName, inData, inConfig) {
+        return axios.put(inName, this.transformParam(inData), inConfig);
       },
-      options: function (inName, inData) {
-        return axios.options(inName, this.transformParam(inData));
+      patch: function (inName, inData, inConfig) {
+        return axios.patch(inName, this.transformParam(inData), inConfig);
       }
     }
   });
