@@ -1,9 +1,21 @@
 # next-axios
 > Axios common features based on next toolkit.
 
-## size:
-+ [ default size ]: all files 2.1 kB
-+ [ minimize size ]: all files 1.12 kB
+## react-native: info.plist
+```xml
+<!-- Networking config -->
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSExceptionDomains</key>
+    <dict>
+        <key>localhost</key>
+        <dict>
+            <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+            <true/>
+        </dict>
+    </dict>
+</dict>
+```
 
 ## resources:
 + https://github.com/mzabriskie/axios
