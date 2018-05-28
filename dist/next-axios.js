@@ -3,9 +3,11 @@
   var global = global || this || self || window;
   var nx = global.nx || require('next-js-core2');
   var axios = global.axios || require('axios');
-
+  var DEFAULT_CONTENT_TYPE = 'application/json;charset=utf-8';
   //just require it:
   require('next-param');
+
+
 
   var NxAxios = nx.declare('nx.Axios', {
     methods: {
@@ -46,6 +48,9 @@
           self.error(error);
           nx.error(error);
         });
+      },
+      contentType: function(){
+        return DEFAULT_CONTENT_TYPE;
       },
       transformParam: function(inData){
         return inData;
