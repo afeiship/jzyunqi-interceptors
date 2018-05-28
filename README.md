@@ -12,4 +12,5 @@
 
 ## todos:
 - [ ] next-axios transformParam: when get/post/ and different API name
-+ [ ] transformParam: remove nx.param default
+- [ ] transformParam: remove nx.param default
+- [ ] response/request Class for input/output data wrapper.
