@@ -48,10 +48,7 @@
         });
       },
       transformParam: function(inData){
-        return nx.param(inData);
-      },
-      contentType: function(){
-        return 'application/x-www-form-urlencoded';
+        return inData;
       },
       success: function (inResponse) {
         return this.toData(inResponse);
