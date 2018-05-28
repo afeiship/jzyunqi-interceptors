@@ -4,10 +4,6 @@
   var nx = global.nx || require('next-js-core2');
   var axios = global.axios || require('axios');
   var DEFAULT_CONTENT_TYPE = 'application/json;charset=utf-8';
-  //just require it:
-  require('next-param');
-
-
 
   var NxAxios = nx.declare('nx.Axios', {
     methods: {
@@ -28,7 +24,7 @@
       },
       setHeaders: function (inOptions) {
         var options = inOptions || {};
-        var defaults = { 'Content-Type': this.contentType() };
+        var defaults = { 'Content-Type': DEFAULT_CONTENT_TYPE };
         nx.mix(axios.defaults.headers, inOptions, {
           common: nx.mix(defaults, options.common),
           get: nx.mix(defaults, options.get),
@@ -48,12 +44,6 @@
           self.error(error);
           nx.error(error);
         });
-      },
-      contentType: function(){
-        return DEFAULT_CONTENT_TYPE;
-      },
-      transformParam: function(inData){
-        return inData;
       },
       success: function (inResponse) {
         return this.toData(inResponse);
@@ -79,19 +69,19 @@
         }, inConfig);
       },
       delete: function (inName, inData, inConfig) {
-        return axios.delete(inName, this.transformParam(inData), inConfig);
+        return axios.delete(inName, inData, inConfig);
       },
       head: function (inName, inData, inConfig) {
-        return axios.head(inName, this.transformParam(inData), inConfig);
+        return axios.head(inName, inData, inConfig);
       },
       post: function (inName, inData, inConfig) {
-        return axios.post(inName, this.transformParam(inData), inConfig);
+        return axios.post(inName, inData, inConfig);
       },
       put: function (inName, inData, inConfig) {
-        return axios.put(inName, this.transformParam(inData), inConfig);
+        return axios.put(inName, inData, inConfig);
       },
       patch: function (inName, inData, inConfig) {
-        return axios.patch(inName, this.transformParam(inData), inConfig);
+        return axios.patch(inName, inData, inConfig);
       }
     }
   });
