@@ -24,7 +24,7 @@
       },
       setHeaders: function (inOptions) {
         var options = inOptions || {};
-        var defaults = { 'Content-Type': DEFAULT_CONTENT_TYPE };
+        var defaults = { 'Content-Type': this.contentType() };
         nx.mix(axios.defaults.headers, inOptions, {
           common: nx.mix(defaults, options.common),
           get: nx.mix(defaults, options.get),
@@ -44,6 +44,9 @@
           self.error(error);
           nx.error(error);
         });
+      },
+      contentType: function(){
+        return DEFAULT_CONTENT_TYPE;
       },
       success: function (inResponse) {
         return this.toData(inResponse);
