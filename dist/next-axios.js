@@ -7,6 +7,16 @@
   var ERROR_MSG = '[nx.Axios]: Please implment the method!';
 
   var NxAxios = nx.declare('nx.Axios', {
+    statics: {
+      axios: axios,
+      instance: null,
+      getInstance: function () {
+        if (!NxAxios.instance) {
+          NxAxios.instance = new NxAxios();
+        }
+        return NxAxios.instance;
+      }
+    },
     methods: {
       axios:axios,
       init: function () {
