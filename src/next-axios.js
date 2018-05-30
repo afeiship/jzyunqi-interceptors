@@ -11,10 +11,10 @@
       axios: axios,
       instance: null,
       getInstance: function () {
-        if (!NxAxios.instance) {
-          NxAxios.instance = new NxAxios();
+        if (!this.instance) {
+          this.instance = new this();
         }
-        return NxAxios.instance;
+        return this.instance;
       }
     },
     methods: {
