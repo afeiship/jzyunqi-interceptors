@@ -4,36 +4,31 @@
   var nx = global.nx || require('next-js-core2');
   var axios = global.axios || require('axios');
   var DEFAULT_CONTENT_TYPE = 'application/json;charset=utf-8';
+  var ERROR_MSG = '[nx.Axios]: Please implment the method!';
 
   var NxAxios = nx.declare('nx.Axios', {
     methods: {
       axios:axios,
       init: function () {
         this.setDefaults();
-        this.setHeaders();
         this.setRequestInterceptor();
         this.setResponseInterceptor();
       },
       setDefaults: function (inOptions) {
-        //baseUrl/timeout
+        var headers = { 'Content-Type': this.contentType() };
         var options = inOptions || {
-            baseURL: './',
-            timeout: 30000
-          };
+          baseURL: './',
+          timeout: 30000,
+          headers: {
+            get: headers,
+            post: headers,
+            delete: headers,
+            put: headers,
+            patch: headers,
+            head: headers,
+          }
+        };
         nx.mix(axios.defaults, options);
-      },
-      setHeaders: function (inOptions) {
-        var options = inOptions || {};
-        var defaults = { 'Content-Type': this.contentType() };
-        nx.mix(axios.defaults.headers, inOptions, {
-          common: nx.mix(defaults, options.common),
-          head: nx.mix(defaults, options.head),
-          get: nx.mix(defaults, options.get),
-          post: nx.mix(defaults, options.post),
-          put: nx.mix(defaults, options.put),
-          delete: nx.mix(defaults, options.delete),
-          patch: nx.mix(defaults, options.patch),
-        });
       },
       setRequestInterceptor: function () {
       },
@@ -53,7 +48,7 @@
         return this.toData(inResponse);
       },
       error: function (inError) {
-        console.log('[nx.Axios]: Please implment the method!', inError);
+        console.log(ERROR_MSG, inError);
       },
       toData: function (inResponse) {
         return inResponse;
@@ -68,9 +63,7 @@
         return axios.request(inOptions);
       },
       get: function (inName, inData, inConfig) {
-        return axios.get(inName, {
-          params: inData
-        }, inConfig);
+        return axios.get(inName, { params: inData }, inConfig);
       },
       delete: function (inName, inData, inConfig) {
         return axios.delete(inName, inData, inConfig);
