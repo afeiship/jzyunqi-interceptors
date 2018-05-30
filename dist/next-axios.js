@@ -27,6 +27,7 @@
         var defaults = { 'Content-Type': this.contentType() };
         nx.mix(axios.defaults.headers, inOptions, {
           common: nx.mix(defaults, options.common),
+          head: nx.mix(defaults, options.head),
           get: nx.mix(defaults, options.get),
           post: nx.mix(defaults, options.post),
           put: nx.mix(defaults, options.put),
