@@ -30,6 +30,7 @@
           baseURL: './',
           timeout: 30000,
           headers: {
+            common: headers,
             get: headers,
             post: headers,
             delete: headers,
