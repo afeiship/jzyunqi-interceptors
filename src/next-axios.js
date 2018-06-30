@@ -1,6 +1,6 @@
 (function () {
 
-  var global = global || this || self || window;
+  var global = global || window || self || Function('return this')();
   var nx = global.nx || require('next-js-core2');
   var axios = global.axios || require('axios');
   var DEFAULT_CONTENT_TYPE = 'application/json;charset=utf-8';
