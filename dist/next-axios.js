@@ -24,7 +24,7 @@
         this.setResponseInterceptor();
       },
       setDefaults: function (inOptions) {
-        var headers = { 'Content-Type': this.contentType() };
+        var headers = this.headers();
         var options = inOptions || {
           baseURL: './',
           timeout: 30000,
@@ -51,7 +51,13 @@
           nx.error(error);
         });
       },
+      headers: function () {
+        return {
+          'Content-Type': this.contentType()
+        };
+      },
       contentType: function () {
+        console.warn('[@deprecated]: will be removed in future');
         return DEFAULT_CONTENT_TYPE;
       },
       success: function (inResponse) {
