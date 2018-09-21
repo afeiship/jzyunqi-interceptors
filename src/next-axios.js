@@ -8,7 +8,6 @@
 
   var NxAxios = nx.declare('nx.Axios', {
     statics: {
-      axios: axios,
       instance: null,
       getInstance: function () {
         if (!this.instance) {
@@ -18,7 +17,6 @@
       }
     },
     methods: {
-      axios:axios,
       init: function () {
         this.setDefaults();
         this.setRequestInterceptor();
@@ -52,7 +50,7 @@
           nx.error(error);
         });
       },
-      contentType: function(){
+      contentType: function () {
         return DEFAULT_CONTENT_TYPE;
       },
       success: function (inResponse) {
@@ -67,29 +65,13 @@
       isSuccess: function (inResponse) {
         return !inResponse.errorCode;
       },
-      all: function(inOptions){
-        return axios.all(inOptions);
-      },
       request: function (inOptions) {
         return axios.request(inOptions);
       },
-      get: function (inName, inData, inConfig) {
-        return axios.get(inName, { params: inData }, inConfig);
-      },
-      delete: function (inName, inData, inConfig) {
-        return axios.delete(inName, inData, inConfig);
-      },
-      head: function (inName, inData, inConfig) {
-        return axios.head(inName, inData, inConfig);
-      },
-      post: function (inName, inData, inConfig) {
-        return axios.post(inName, inData, inConfig);
-      },
-      put: function (inName, inData, inConfig) {
-        return axios.put(inName, inData, inConfig);
-      },
-      patch: function (inName, inData, inConfig) {
-        return axios.patch(inName, inData, inConfig);
+      'get,delete,head,post,put,patch': function (inMethod) {
+        return function (inName, inData, inConfig) {
+          return axios[inMethod](inName, inData, inConfig);
+        };
       }
     }
   });
