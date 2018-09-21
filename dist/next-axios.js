@@ -3,8 +3,9 @@
   var global = global || window || self || Function('return this')();
   var nx = global.nx || require('next-js-core2');
   var axios = global.axios || require('axios');
-  var DEFAULT_CONTENT_TYPE = 'application/json;charset=utf-8';
   var ERROR_MSG = '[nx.Axios]: Please implment the method!';
+  var contentType = nx.contentType || require('next-content-type');
+
 
   var NxAxios = nx.declare('nx.Axios', {
     statics: {
@@ -53,12 +54,8 @@
       },
       headers: function () {
         return {
-          'Content-Type': this.contentType()
+          'Content-Type': contentType('json')
         };
-      },
-      contentType: function () {
-        console.warn('[@deprecated]: will be removed in future');
-        return DEFAULT_CONTENT_TYPE;
       },
       success: function (inResponse) {
         return this.toData(inResponse);
