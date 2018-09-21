@@ -17,6 +17,7 @@
       }
     },
     methods: {
+      axios: axios,
       init: function () {
         this.setDefaults();
         this.setRequestInterceptor();
