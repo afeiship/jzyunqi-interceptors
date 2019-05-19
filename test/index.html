@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <script src="../node_modules/next-js-core2/dist/next-js-core2.js"></script>
-  <script src="../node_modules/axios/dist/axios.js"></script>
-  <script src="../src/next-axios.js"></script>
+  <script src="/next-js-core2/dist/next-js-core2.js"></script>
+  <script src="/next-content-type/dist/next-content-type.js"></script>
+  <script src="/next-stub-singleton/dist/next-stub-singleton.js"></script>
+  <script src="/axios/dist/axios.js"></script>
+  <script src="/next-axios.js"></script>
 </head>
 <body>
 <script>
@@ -17,7 +19,7 @@
     methods: {
       init: function () {
         this.base();
-        this.setHeaders({
+        this.headers({
           common: {
             'Client-ABC': 'H5-fei'
           }
@@ -31,11 +33,11 @@
 
   var http = new MyBaseHttp();
 
-  http.get('data/test.json').then(function (response) {
+  http.get('/data/test.json').then(function (response) {
     console.log(response);
   });
 
-  http.get('data/test1.json').then(function (response) {
+  http.get('/data/test1.json').then(function (response) {
     console.log(response);
     console.log('error...');
   });

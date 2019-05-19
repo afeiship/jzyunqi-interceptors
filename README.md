@@ -1,6 +1,23 @@
 # next-axios
 > Axios common features based on next toolkit.
 
+## install
+```bash
+npm install -S afeiship/next-axios --registry=https://registry.npm.taobao.org
+```
+
+## apis
+| api | params | description   |
+|-----|--------|---------------|
+| get | -      | desc balabala |
+
+## usage
+```js
+import NxAxios from 'next-axios';
+
+// code goes here:
+```
+
 ## react-native: info.plist
 ```xml
 <!-- Networking config -->
@@ -26,3 +43,4 @@
 - [ ] next-axios transformParam: when get/post/ and different API name
 - [ ] transformParam: remove nx.param default
 - [ ] response/request Class for input/output data wrapper.
+

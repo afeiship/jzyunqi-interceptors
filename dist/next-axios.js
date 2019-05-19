@@ -1,30 +1,27 @@
-(function () {
+/*!
+ * name: next-axios
+ * url: https://github.com/afeiship/next-axios
+ * version: 1.0.0
+ * license: MIT
+ */
 
+(function() {
   var global = global || window || self || Function('return this')();
   var nx = global.nx || require('next-js-core2');
   var axios = global.axios || require('axios');
   var ERROR_MSG = '[nx.Axios]: Please implment the method!';
   var contentType = nx.contentType || require('next-content-type');
-
+  var nxStubSingleton = nx.stubSingleton || require('next-stub-singleton');
 
   var NxAxios = nx.declare('nx.Axios', {
-    statics: {
-      instance: null,
-      getInstance: function () {
-        if (!this.instance) {
-          this.instance = new this();
-        }
-        return this.instance;
-      }
-    },
     methods: {
       axios: axios,
-      init: function () {
+      init: function() {
         this.setDefaults();
         this.setRequestInterceptor();
         this.setResponseInterceptor();
       },
-      setDefaults: function (inOptions) {
+      setDefaults: function(inOptions) {
         var headers = this.headers();
         var options = inOptions || {
           baseURL: './',
@@ -36,53 +33,56 @@
             delete: headers,
             put: headers,
             patch: headers,
-            head: headers,
+            head: headers
           }
         };
         nx.mix(axios.defaults, options);
       },
-      setRequestInterceptor: function () {
-      },
-      setResponseInterceptor: function () {
+      setRequestInterceptor: function() {},
+      setResponseInterceptor: function() {
         var self = this;
-        axios.interceptors.response.use(function (response) {
-          return self.success(response);
-        }, function (error) {
-          self.error(error);
-          nx.error(error);
-        });
+        axios.interceptors.response.use(
+          function(response) {
+            return self.success(response);
+          },
+          function(error) {
+            self.error(error);
+            nx.error(error);
+          }
+        );
       },
-      headers: function () {
+      headers: function() {
         return {
           'Content-Type': contentType('json')
         };
       },
-      success: function (inResponse) {
+      success: function(inResponse) {
         return this.toData(inResponse);
       },
-      error: function (inError) {
+      error: function(inError) {
         console.log(ERROR_MSG, inError);
       },
-      toData: function (inResponse) {
+      toData: function(inResponse) {
         return inResponse;
       },
-      isSuccess: function (inResponse) {
+      isSuccess: function(inResponse) {
         return !inResponse.errorCode;
       },
-      request: function (inOptions) {
+      request: function(inOptions) {
         return axios.request(inOptions);
       },
-      'get,delete,head,post,put,patch': function (inMethod) {
-        return function (inName, inData, inConfig) {
+      'get,delete,head,post,put,patch': function(inMethod) {
+        return function(inName, inData, inConfig) {
           return axios[inMethod](inName, inData, inConfig);
         };
       }
     }
   });
 
+  // singleton:
+  nx.mix(NxAxios, nxStubSingleton());
 
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = NxAxios;
   }
-
-}());
+})();
