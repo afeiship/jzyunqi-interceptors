@@ -7,6 +7,7 @@
   var nxStubSingleton = nx.stubSingleton || require('next-stub-singleton');
 
   var NxAxios = nx.declare('nx.Axios', {
+    statics: nx.mix(null, nxStubSingleton()),
     methods: {
       axios: axios,
       init: function() {
@@ -71,9 +72,6 @@
       }
     }
   });
-
-  // singleton:
-  nx.mix(NxAxios, nxStubSingleton());
 
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = NxAxios;
