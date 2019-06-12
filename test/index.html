@@ -1,47 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <script src="/next-js-core2/dist/next-js-core2.js"></script>
-  <script src="/next-content-type/dist/next-content-type.js"></script>
-  <script src="/next-stub-singleton/dist/next-stub-singleton.js"></script>
-  <script src="/axios/dist/axios.js"></script>
-  <script src="/next-axios.js"></script>
-</head>
-<body>
-<script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="/next-js-core2/dist/next-js-core2.js"></script>
+    <script src="/next-content-type/dist/next-content-type.js"></script>
+    <script src="/next-stub-singleton/dist/next-stub-singleton.js"></script>
+    <script src="/axios/dist/axios.js"></script>
+    <script src="/next-axios.js"></script>
+  </head>
+  <body>
 
-  var MyBaseHttp = nx.declare({
-    extends: nx.Axios,
-    methods: {
-      init: function () {
-        this.base();
-        this.headers({
-          common: {
-            'Client-ABC': 'H5-fei'
+    <img id="image"/>
+    <script>
+      var MyBaseHttp = nx.declare({
+        extends: nx.Axios,
+        methods: {
+          init: function() {
+            this.base();
+            this.headers({
+              common: {
+                'Client-ABC': 'H5-fei'
+              }
+            });
+          },
+          toData: function(inResponse) {
+            return inResponse.data;
           }
-        })
-      },
-      toData: function (inResponse) {
-        return inResponse.data;
+        }
+      });
+
+      var http = new MyBaseHttp();
+
+      http.get('/data/test.json').then(function(response) {
+        console.log(response);
+      });
+
+      http.get('/data/test1.json').then(function(response) {
+        console.log(response);
+        console.log('error...');
+      });
+
+      // http.get('/be10475f686d6c73db00.jpg').then((respnse) => {
+      //   console.log('response', respnse);
+      // });
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/be10475f686d6c73db00.jpg');
+      xhr.responseType = 'blob';
+      xhr.onload = response;
+      xhr.send();
+
+      function response(e) {
+        var urlCreator = window.URL || window.webkitURL;
+        var imageUrl = urlCreator.createObjectURL(this.response);
+        console.log(this.response)
+        document.querySelector('#image').src = imageUrl;
       }
-    }
-  });
-
-  var http = new MyBaseHttp();
-
-  http.get('/data/test.json').then(function (response) {
-    console.log(response);
-  });
-
-  http.get('/data/test1.json').then(function (response) {
-    console.log(response);
-    console.log('error...');
-  });
-
-</script>
-</body>
+    </script>
+  </body>
 </html>
