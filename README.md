@@ -38,9 +38,11 @@ import NxAxios from 'next-axios';
 + https://github.com/mzabriskie/axios
 + http://codeheaven.io/how-to-use-axios-as-your-http-client/
 + https://github.com/kriskowal/q
++ https://github.com/ohhoney1/notes/issues/3
 
 ## todos:
 - [ ] next-axios transformParam: when get/post/ and different API name
 - [ ] transformParam: remove nx.param default
 - [ ] response/request Class for input/output data wrapper.
+- [ ] cacnel request
 
