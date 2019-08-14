@@ -47,9 +47,7 @@
         );
       },
       headers: function() {
-        return {
-          'Content-Type': contentType('json')
-        };
+        return { 'Content-Type': contentType('json') };
       },
       success: function(inResponse) {
         return this.toData(inResponse);

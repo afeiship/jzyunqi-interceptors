@@ -2,7 +2,7 @@
  * name: next-axios
  * url: https://github.com/afeiship/next-axios
  * version: 1.1.0
- * date: 2019-08-14T12:16:55.683Z
+ * date: 2019-08-14T12:17:15.626Z
  * license: MIT
  */
 
@@ -55,9 +55,7 @@
         );
       },
       headers: function() {
-        return {
-          'Content-Type': contentType('json')
-        };
+        return { 'Content-Type': contentType('json') };
       },
       success: function(inResponse) {
         return this.toData(inResponse);
