@@ -2,7 +2,7 @@
  * name: next-axios
  * url: https://github.com/afeiship/next-axios
  * version: 1.1.0
- * date: 2019-08-14T12:17:15.626Z
+ * date: 2019-08-14T12:24:04.391Z
  * license: MIT
  */
 
@@ -80,7 +80,17 @@
       },
       'get,delete,head,post,put,patch': function(inMethod) {
         return function(inName, inData, inConfig) {
-          return axios[inMethod](inName, inData, inConfig);
+          const addtional = inMethod === 'get' ? { params: inData } : { data: inData };
+          return this.request(
+            nx.mix(
+              {
+                method: inMethod,
+                url: inName
+              },
+              addtional,
+              inConfig
+            )
+          );
         };
       }
     }

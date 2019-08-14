@@ -72,7 +72,17 @@
       },
       'get,delete,head,post,put,patch': function(inMethod) {
         return function(inName, inData, inConfig) {
-          return axios[inMethod](inName, inData, inConfig);
+          const addtional = inMethod === 'get' ? { params: inData } : { data: inData };
+          return this.request(
+            nx.mix(
+              {
+                method: inMethod,
+                url: inName
+              },
+              addtional,
+              inConfig
+            )
+          );
         };
       }
     }
