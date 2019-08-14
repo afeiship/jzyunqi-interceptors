@@ -2,7 +2,7 @@
  * name: next-axios
  * url: https://github.com/afeiship/next-axios
  * version: 1.1.0
- * date: 2019-08-14T12:14:57.208Z
+ * date: 2019-08-14T12:16:18.733Z
  * license: MIT
  */
 
