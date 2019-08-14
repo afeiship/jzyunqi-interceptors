@@ -2,6 +2,7 @@
  * name: next-axios
  * url: https://github.com/afeiship/next-axios
  * version: 1.0.0
+ * date: 2019-08-14T09:33:56.447Z
  * license: MIT
  */
 
@@ -84,3 +85,5 @@
     module.exports = NxAxios;
   }
 })();
+
+//# sourceMappingURL=next-axios.js.map
