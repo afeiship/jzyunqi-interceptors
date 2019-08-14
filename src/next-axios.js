@@ -68,7 +68,7 @@
         var source = CancelToken.source();
         var additional = resource ? { cancelToken: source.token } : null;
         var options = nx.mix(additional, inOptions);
-        // [ context, path ]
+        // resource:[ context, path ]
         resource && nx.set(resource[0], resource[1], { destroy: source.cancel });
         return axios.request(options);
       },

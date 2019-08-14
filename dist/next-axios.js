@@ -2,7 +2,7 @@
  * name: next-axios
  * url: https://github.com/afeiship/next-axios
  * version: 1.1.0
- * date: 2019-08-14T12:16:18.733Z
+ * date: 2019-08-14T12:16:55.683Z
  * license: MIT
  */
 
@@ -76,7 +76,7 @@
         var source = CancelToken.source();
         var additional = resource ? { cancelToken: source.token } : null;
         var options = nx.mix(additional, inOptions);
-        // [ context, path ]
+        // resource:[ context, path ]
         resource && nx.set(resource[0], resource[1], { destroy: source.cancel });
         return axios.request(options);
       },
