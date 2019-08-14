@@ -1,8 +1,8 @@
 /*!
  * name: next-axios
  * url: https://github.com/afeiship/next-axios
- * version: 1.0.0
- * date: 2019-08-14T09:33:56.447Z
+ * version: 1.1.0
+ * date: 2019-08-14T12:14:57.208Z
  * license: MIT
  */
 
@@ -13,6 +13,7 @@
   var ERROR_MSG = '[nx.Axios]: Please implment the method!';
   var contentType = nx.contentType || require('next-content-type');
   var nxStubSingleton = nx.stubSingleton || require('next-stub-singleton');
+  var CancelToken = axios.CancelToken;
 
   var NxAxios = nx.declare('nx.Axios', {
     statics: nx.mix(null, nxStubSingleton()),
@@ -49,7 +50,7 @@
           },
           function(error) {
             self.error(error);
-            nx.error(error);
+            // nx.error(error);
           }
         );
       },
@@ -71,7 +72,13 @@
         return !inResponse.errorCode;
       },
       request: function(inOptions) {
-        return axios.request(inOptions);
+        var resource = inOptions.resource;
+        var source = CancelToken.source();
+        var additional = resource ? { cancelToken: source.token } : null;
+        var options = nx.mix(additional, inOptions);
+        // [ context, path ]
+        resource && nx.set(resource[0], resource[1], { destroy: source.cancel });
+        return axios.request(options);
       },
       'get,delete,head,post,put,patch': function(inMethod) {
         return function(inName, inData, inConfig) {
