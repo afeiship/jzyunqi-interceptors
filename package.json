@@ -1,6 +1,6 @@
 {
-  "name": "next-axios",
-  "version": "1.1.0",
+  "name": "@feizheng/next-axios",
+  "version": "2.0.0",
   "description": "Axios common features based on next toolkit.",
   "homepage": "https://github.com/afeiship/next-axios",
   "author": {
@@ -15,6 +15,8 @@
   "main": "dist/next-axios.js",
   "license": "MIT",
   "devDependencies": {
+    "@feizheng/next-nice-comments": "^1.0.0",
+    "@feizheng/rake-git": "^1.2.0",
     "del": "^2.2.1",
     "express": "^4.17.1",
     "gulp": "^4.0.2",
@@ -29,15 +31,13 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^2.1.2",
     "jest": "^23.6.0",
-    "next-nice-comments": "github:afeiship/next-nice-comments",
-    "rake-git": "github:afeiship/rake-git",
     "uglify-save-license": "^0.4.1",
     "yargs": "^4.7.1"
   },
   "dependencies": {
-    "axios": "^0.19.0",
-    "next-content-type": "github:afeiship/next-content-type",
-    "next-js-core2": "github:afeiship/next-js-core2",
-    "next-stub-singleton": "github:afeiship/next-stub-singleton"
+    "@feizheng/next-content-type": "^1.0.0",
+    "@feizheng/next-js-core2": "^2.0.2",
+    "@feizheng/next-stub-singleton": "^1.0.1",
+    "axios": "^0.19.0"
   }
 }

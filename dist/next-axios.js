@@ -1,19 +1,19 @@
 /*!
- * name: next-axios
+ * name: @feizheng/next-axios
  * url: https://github.com/afeiship/next-axios
- * version: 1.1.0
- * date: 2019-08-14T12:24:04.391Z
+ * version: 2.0.0
+ * date: 2019-11-24T09:49:28.587Z
  * license: MIT
  */
 
 (function() {
   var global = global || window || self || Function('return this')();
-  var nx = global.nx || require('next-js-core2');
+  var nx = global.nx || require('@feizheng/next-js-core2');
   var axios = global.axios || require('axios');
-  var ERROR_MSG = '[nx.Axios]: Please implment the method!';
-  var contentType = nx.contentType || require('next-content-type');
-  var nxStubSingleton = nx.stubSingleton || require('next-stub-singleton');
+  var contentType = nx.contentType || require('@feizheng/next-content-type');
+  var nxStubSingleton = nx.stubSingleton || require('@feizheng/next-stub-singleton');
   var CancelToken = axios.CancelToken;
+  var ERROR_MSG = '[nx.Axios]: Please implment the method!';
 
   var NxAxios = nx.declare('nx.Axios', {
     statics: nx.mix(null, nxStubSingleton()),

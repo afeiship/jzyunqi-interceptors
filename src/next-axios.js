@@ -1,11 +1,11 @@
 (function() {
   var global = global || window || self || Function('return this')();
-  var nx = global.nx || require('next-js-core2');
+  var nx = global.nx || require('@feizheng/next-js-core2');
   var axios = global.axios || require('axios');
-  var ERROR_MSG = '[nx.Axios]: Please implment the method!';
-  var contentType = nx.contentType || require('next-content-type');
-  var nxStubSingleton = nx.stubSingleton || require('next-stub-singleton');
+  var contentType = nx.contentType || require('@feizheng/next-content-type');
+  var nxStubSingleton = nx.stubSingleton || require('@feizheng/next-stub-singleton');
   var CancelToken = axios.CancelToken;
+  var ERROR_MSG = '[nx.Axios]: Please implment the method!';
 
   var NxAxios = nx.declare('nx.Axios', {
     statics: nx.mix(null, nxStubSingleton()),
