@@ -1,15 +1,15 @@
 /*!
  * name: @feizheng/next-axios
  * url: https://github.com/afeiship/next-axios
- * version: 2.0.0
- * date: 2019-11-24T09:49:28.587Z
+ * version: 2.0.1
+ * date: 2019-11-24T13:47:28.883Z
  * license: MIT
  */
 
 (function() {
   var global = global || window || self || Function('return this')();
-  var nx = global.nx || require('@feizheng/next-js-core2');
   var axios = global.axios || require('axios');
+  var nx = global.nx || require('@feizheng/next-js-core2');
   var contentType = nx.contentType || require('@feizheng/next-content-type');
   var nxStubSingleton = nx.stubSingleton || require('@feizheng/next-stub-singleton');
   var CancelToken = axios.CancelToken;
