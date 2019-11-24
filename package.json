@@ -9,8 +9,7 @@
   },
   "scripts": {
     "build": "gulp",
-    "test": "jest",
-    "version": "gulp bump"
+    "test": "jest"
   },
   "main": "dist/next-axios.js",
   "license": "MIT",
