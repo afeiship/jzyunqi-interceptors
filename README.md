@@ -13,7 +13,7 @@ npm install -S @feizheng/next-axios
 
 ## usage
 ```js
-import NxAxios from 'next-axios';
+import NxAxios from '@feizheng/next-axios';
 
 // code goes here:
 ```
