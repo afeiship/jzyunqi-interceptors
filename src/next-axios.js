@@ -38,11 +38,16 @@
         var self = this;
         axios.interceptors.response.use(
           function(response) {
-            var action = self.isSuccess(response) ? 'success' : 'error';
-            return self[action](response);
+            if (self.isSuccess(response)) {
+              return self.success(response);
+            } else {
+              self.error(response);
+              return Promise.reject(response);
+            }
           },
           function(error) {
             self.error(error);
+            return Promise.reject(error);
           }
         );
       },

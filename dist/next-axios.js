@@ -2,7 +2,7 @@
  * name: @feizheng/next-axios
  * url: https://github.com/afeiship/next-axios
  * version: 2.0.3
- * date: 2020-01-07T06:23:12.162Z
+ * date: 2020-01-07T06:48:18.220Z
  * license: MIT
  */
 
@@ -46,11 +46,16 @@
         var self = this;
         axios.interceptors.response.use(
           function(response) {
-            var action = self.isSuccess(response) ? 'success' : 'error';
-            return self[action](response);
+            if (self.isSuccess(response)) {
+              return self.success(response);
+            } else {
+              self.error(response);
+              return Promise.reject(response);
+            }
           },
           function(error) {
             self.error(error);
+            return Promise.reject(error);
           }
         );
       },
