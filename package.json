@@ -38,5 +38,8 @@
     "@feizheng/next-js-core2": "^2.0.2",
     "@feizheng/next-stub-singleton": "^1.0.1",
     "axios": "^0.19.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
