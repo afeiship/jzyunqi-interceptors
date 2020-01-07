@@ -1,8 +1,8 @@
 /*!
  * name: @feizheng/next-axios
  * url: https://github.com/afeiship/next-axios
- * version: 2.0.2
- * date: 2020-01-07T06:22:31.228Z
+ * version: 2.0.3
+ * date: 2020-01-07T06:23:12.162Z
  * license: MIT
  */
 
