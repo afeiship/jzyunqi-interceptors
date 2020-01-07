@@ -38,11 +38,11 @@
         var self = this;
         axios.interceptors.response.use(
           function(response) {
-            return self.success(response);
+            var action = self.isSuccess(response) ? 'success' : 'error';
+            return self[action](response);
           },
           function(error) {
             self.error(error);
-            // nx.error(error);
           }
         );
       },
