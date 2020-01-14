@@ -1,6 +1,6 @@
 {
   "name": "@feizheng/next-axios",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Axios common features based on next toolkit.",
   "homepage": "https://github.com/afeiship/next-axios",
   "author": {
@@ -37,7 +37,7 @@
     "@feizheng/next-content-type": "^1.0.0",
     "@feizheng/next-js-core2": "^2.0.2",
     "@feizheng/next-stub-singleton": "^1.0.1",
-    "axios": "^0.19.0"
+    "axios": "^0.19.1"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
