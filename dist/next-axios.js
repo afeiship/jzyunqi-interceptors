@@ -1,8 +1,8 @@
 /*!
  * name: @feizheng/next-axios
  * url: https://github.com/afeiship/next-axios
- * version: 2.0.3
- * date: 2020-01-07T06:48:18.220Z
+ * version: 3.0.0
+ * date: 2020-03-24T09:17:41.969Z
  * license: MIT
  */
 
@@ -12,7 +12,6 @@
   var nx = global.nx || require('@feizheng/next-js-core2');
   var contentType = nx.contentType || require('@feizheng/next-content-type');
   var nxStubSingleton = nx.stubSingleton || require('@feizheng/next-stub-singleton');
-  var CancelToken = axios.CancelToken;
   var ERROR_MSG = '[nx.Axios]: Please implment the method!';
 
   var NxAxios = nx.declare('nx.Axios', {
@@ -23,6 +22,13 @@
         this.setDefaults();
         this.setRequestInterceptor();
         this.setResponseInterceptor();
+        this.onInit();
+      },
+      onInit: function() {
+        // @template method
+      },
+      onRequest: function() {
+        // @template method
       },
       setDefaults: function(inOptions) {
         var headers = this.headers();
@@ -59,33 +65,28 @@
           }
         );
       },
+      isSuccess: function(inResponse) {
+        return !!inResponse.success;
+      },
       headers: function() {
         return { 'Content-Type': contentType('json') };
       },
       success: function(inResponse) {
-        return this.toData(inResponse);
+        return this.data(inResponse);
       },
       error: function(inError) {
         console.log(ERROR_MSG, inError);
       },
-      toData: function(inResponse) {
+      data: function(inResponse) {
         return inResponse;
       },
-      isSuccess: function(inResponse) {
-        return !inResponse.errorCode;
-      },
       request: function(inOptions) {
-        var resource = inOptions.resource;
-        var source = CancelToken.source();
-        var additional = resource ? { cancelToken: source.token } : null;
-        var options = nx.mix(additional, inOptions);
-        // resource:[ context, path ]
-        resource && nx.set(resource[0], resource[1], { destroy: source.cancel });
-        return axios.request(options);
+        this.onRequest(inOptions);
+        return axios.request(inOptions);
       },
       'get,delete,head,post,put,patch': function(inMethod) {
         return function(inName, inData, inConfig) {
-          const addtional = inMethod === 'get' ? { params: inData } : { data: inData };
+          var addtional = inMethod === 'get' ? { params: inData } : { data: inData };
           return this.request(
             nx.mix(
               {
