@@ -1,9 +1,14 @@
 .idea
 .DS_Store
+.release-it.json
+.editorconfig
+.prettierrc
+
+
 **/npm-debug.log
 **/node_modules
 test
 src
 build
 gulpfile.js
-.release-it.json
+server.js
