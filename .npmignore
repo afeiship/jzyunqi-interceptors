@@ -6,3 +6,4 @@ test
 src
 build
 gulpfile.js
+.release-it.json

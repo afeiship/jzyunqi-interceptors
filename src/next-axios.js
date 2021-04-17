@@ -1,28 +1,27 @@
-(function() {
-  var global = global || window || self || Function('return this')();
+(function () {
+  var global = typeof window !== 'undefined' ? window : this || Function('return this')();
   var axios = global.axios || require('axios');
-  var nx = global.nx || require('@feizheng/next-js-core2');
-  var contentType = nx.contentType || require('@feizheng/next-content-type');
-  var nxStubSingleton = nx.stubSingleton || require('@feizheng/next-stub-singleton');
+  var nx = global.nx || require('@jswork/next');
+  var contentType = nx.contentType || require('@jswork/next-content-type');
+  var nxStubSingleton = nx.stubSingleton || require('@jswork/next-stub-singleton');
   var ERROR_MSG = '[nx.Axios]: Please implment the method!';
 
   var NxAxios = nx.declare('nx.Axios', {
     statics: nx.mix(null, nxStubSingleton()),
     methods: {
-      axios: axios,
-      init: function() {
+      init: function () {
         this.setDefaults();
         this.setRequestInterceptor();
         this.setResponseInterceptor();
         this.onInit();
       },
-      onInit: function() {
+      onInit: function () {
         // @template method
       },
-      onRequest: function() {
+      onRequest: function () {
         // @template method
       },
-      setDefaults: function(inOptions) {
+      setDefaults: function (inOptions) {
         var headers = this.headers();
         var options = inOptions || {
           baseURL: './',
@@ -39,11 +38,11 @@
         };
         nx.mix(axios.defaults, options);
       },
-      setRequestInterceptor: function() {},
-      setResponseInterceptor: function() {
+      setRequestInterceptor: function () {},
+      setResponseInterceptor: function () {
         var self = this;
         axios.interceptors.response.use(
-          function(response) {
+          function (response) {
             if (self.isSuccess(response)) {
               return self.success(response);
             } else {
@@ -51,33 +50,33 @@
               return Promise.reject(response);
             }
           },
-          function(error) {
+          function (error) {
             self.error(error);
             return Promise.reject(error);
           }
         );
       },
-      isSuccess: function(inResponse) {
+      isSuccess: function (inResponse) {
         return !!inResponse.success;
       },
-      headers: function() {
+      headers: function () {
         return { 'Content-Type': contentType('json') };
       },
-      success: function(inResponse) {
+      success: function (inResponse) {
         return this.data(inResponse);
       },
-      error: function(inError) {
+      error: function (inError) {
         console.log(ERROR_MSG, inError);
       },
-      data: function(inResponse) {
+      data: function (inResponse) {
         return inResponse;
       },
-      request: function(inOptions) {
+      request: function (inOptions) {
         this.onRequest(inOptions);
         return axios.request(inOptions);
       },
-      'get,delete,head,post,put,patch': function(inMethod) {
-        return function(inName, inData, inConfig) {
+      'get,delete,head,post,put,patch': function (inMethod) {
+        return function (inName, inData, inConfig) {
           var addtional = inMethod === 'get' ? { params: inData } : { data: inData };
           return this.request(
             nx.mix(
