@@ -1,6 +1,6 @@
 {
   "name": "@jswork/next-axios",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Axios common features based on next toolkit.",
   "homepage": "https://github.com/afeiship/next-axios",
   "author": {
