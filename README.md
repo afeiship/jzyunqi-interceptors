@@ -1,7 +1,7 @@
 # next-axios
 > Axios common features based on next toolkit.
 
-## install
+## installation
 ```bash
 npm install -S @jswork/next-axios
 ```
