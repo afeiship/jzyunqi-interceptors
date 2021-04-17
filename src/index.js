@@ -8,6 +8,7 @@
 
   var NxAxios = nx.declare('nx.Axios', {
     statics: nx.mix(null, nxStubSingleton()),
+    axios: axios,
     methods: {
       init: function () {
         this.setDefaults();
