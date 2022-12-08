@@ -1,8 +1,8 @@
 {
   "name": "@jswork/next-axios",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Axios common features based on next toolkit.",
-  "homepage": "https://github.com/afeiship/next-axios",
+  "homepage": "https://js.work",
   "author": {
     "name": "afei",
     "email": "1290657123@qq.com"
@@ -15,36 +15,31 @@
   "main": "dist/index.js",
   "license": "MIT",
   "devDependencies": {
-    "@jswork/gulp-pkg-header": "^1.0.3",
-    "@jswork/next-nice-comments": "^1.0.3",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "@jswork/gulp-pkg-header": "^1.0.4",
+    "@jswork/next": "^1.0.9",
     "del": "^6.0.0",
-    "express": "^4.17.1",
     "gulp": "^4.0.2",
-    "gulp-bump": "^3.2.0",
+    "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-debug": "^4.0.0",
-    "gulp-header": "^2.0.9",
     "gulp-ignore": "^3.0.0",
     "gulp-load-plugins": "^2.0.6",
+    "gulp-rename": "^2.0.0",
     "gulp-size": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "jest": "^26.6.3",
-    "release-it": "^14.6.1",
-    "yargs": "^16.2.0"
-  },
-  "dependencies": {
-    "@jswork/next": "^1.0.5",
-    "@jswork/next-content-type": "^1.0.2",
-    "@jswork/next-stub-singleton": "^1.0.3",
-    "axios": "^0.21.1"
+    "release-it": "^14.2.2",
+    "uglify-js": "3.12.4",
+    "uglify-save-license": "^0.4.1"
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org"
   },
-  "keywords": [
-    "next",
-    "axios",
-    "ajax"
-  ]
+  "dependencies": {
+    "@jswork/next-abstract-request": "^1.0.7",
+    "axios": "^1.2.1"
+  }
 }

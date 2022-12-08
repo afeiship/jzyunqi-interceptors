@@ -1,28 +1,39 @@
 # next-axios
 > Axios common features based on next toolkit.
 
+[![version][version-image]][version-url]
+[![license][license-image]][license-url]
+[![size][size-image]][size-url]
+[![download][download-image]][download-url]
+
 ## installation
 ```bash
 npm install -S @jswork/next-axios
 ```
 
+## apis
+| api | params | description   |
+|-----|--------|---------------|
+| get | -      | desc balabala |
+
 ## usage
 ```js
-import NxAxios from '@jswork/next-axios';
+import NxBoilerplateClass from '@jswork/next-axios';
 
 // code goes here:
 ```
 
-## resources
-- https://github.com/mzabriskie/axios
-- http://codeheaven.io/how-to-use-axios-as-your-http-client/
-- https://github.com/kriskowal/q
-- https://github.com/ohhoney1/notes/issues/3
-- https://medium.com/@selvaganesh93/how-to-clean-up-subscriptions-in-react-components-using-abortcontroller-72335f19b6f7
+## license
+Code released under [the MIT license](https://github.com/afeiship/next-axios/blob/master/LICENSE.txt).
 
-## todos
-- [ ] next-axios transformParam: when get/post/ and different API name
-- [ ] transformParam: remove nx.param default
-- [ ] response/request Class for input/output data wrapper.
-- [ ] cacnel request
+[version-image]: https://img.shields.io/npm/v/@jswork/next-axios
+[version-url]: https://npmjs.org/package/@jswork/next-axios
 
+[license-image]: https://img.shields.io/npm/l/@jswork/next-axios
+[license-url]: https://github.com/afeiship/next-axios/blob/master/LICENSE.txt
+
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/next-axios
+[size-url]: https://github.com/afeiship/next-axios/blob/master/dist/next-axios.min.js
+
+[download-image]: https://img.shields.io/npm/dm/@jswork/next-axios
+[download-url]: https://www.npmjs.com/package/@jswork/next-axios
