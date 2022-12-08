@@ -1,6 +1,6 @@
 {
   "name": "@jswork/next-axios",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Axios common features based on next toolkit.",
   "homepage": "https://js.work",
   "author": {
@@ -41,5 +41,10 @@
     "@jswork/next-abstract-request": "^1.0.7",
     "axios": "^1.2.1",
     "release-it": "^15.5.1"
-  }
+  },
+  "keywords": [
+    "next",
+    "axios",
+    "ajax"
+  ]
 }
