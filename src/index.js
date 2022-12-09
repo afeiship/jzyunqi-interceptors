@@ -3,9 +3,9 @@
   var nx = global.nx || require('@jswork/next');
   var defaults = {};
   var NxAbstractRequest = nx.AbstractRequest || require('@jswork/next-abstract-request');
-  var axios = require('axios');
+  var axios = global.axios || require('axios');
 
-  var NxAxios = nx.declare('nx.NextAxios', {
+  var NxAxios = nx.declare('nx.Axios', {
     extends: NxAbstractRequest,
     methods: {
       request: function (inMethod, inUrl, inData, inOptions) {
