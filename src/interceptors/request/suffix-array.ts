@@ -26,7 +26,9 @@ export default function suffixArrayInterceptor(inData: any): any {
   if (when(inData)) {
     nx.deepEach(data, (key, value, target) => {
       if (key.endsWith('Array')) {
-        target[key] = value.join(',');
+        if (Array.isArray(value) && value.every((item) => typeof item !== 'object')) {
+          target[key] = value.join(',');
+        }
       }
     });
   }

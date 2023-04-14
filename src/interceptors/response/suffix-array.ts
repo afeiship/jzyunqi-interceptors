@@ -26,10 +26,12 @@ export default function suffixArrayInterceptor(data: any): any {
   if (typeof when !== 'function') return console.warn('when must be a function'), data;
   if (when(data)) {
     nx.deepEach(response, (key, value, target) => {
-      if (key.endsWith('Array')) {
-        target[key] = value.split(',');
-      } else if (key.endsWith('IdArray')) {
-        target[key] = value.split(',').map((item) => Number(item));
+      if (typeof value === 'string') {
+        if (key.endsWith('Array')) {
+          target[key] = value.split(',');
+        } else if (key.endsWith('IdArray')) {
+          target[key] = value.split(',').map((item) => Number(item));
+        }
       }
     });
   }
