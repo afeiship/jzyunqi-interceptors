@@ -1,3 +1,0 @@
-interface NxStatic {
-  Axios: any;
-}

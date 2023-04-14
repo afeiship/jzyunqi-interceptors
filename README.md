@@ -1,5 +1,5 @@
-# next-axios
-> Axios common features based on next toolkit.
+# jzyunqi-interceptors
+> Interceptors for jzyunqi/yw.
 
 [![version][version-image]][version-url]
 [![license][license-image]][license-url]
@@ -7,33 +7,28 @@
 [![download][download-image]][download-url]
 
 ## installation
-```bash
-npm install -S @jswork/next-axios
+```shell
+npm install @jswork/jzyunqi-interceptors
 ```
-
-## apis
-| api | params | description   |
-|-----|--------|---------------|
-| get | -      | desc balabala |
 
 ## usage
 ```js
-import NxBoilerplateClass from '@jswork/next-axios';
+import jzyunqiInterceptors from '@jswork/jzyunqi-interceptors';
 
-// code goes here:
+// usage goes here.
 ```
 
 ## license
-Code released under [the MIT license](https://github.com/afeiship/next-axios/blob/master/LICENSE.txt).
+Code released under [the MIT license](https://github.com/afeiship/jzyunqi-interceptors/blob/master/LICENSE.txt).
 
-[version-image]: https://img.shields.io/npm/v/@jswork/next-axios
-[version-url]: https://npmjs.org/package/@jswork/next-axios
+[version-image]: https://img.shields.io/npm/v/@jswork/jzyunqi-interceptors
+[version-url]: https://npmjs.org/package/@jswork/jzyunqi-interceptors
 
-[license-image]: https://img.shields.io/npm/l/@jswork/next-axios
-[license-url]: https://github.com/afeiship/next-axios/blob/master/LICENSE.txt
+[license-image]: https://img.shields.io/npm/l/@jswork/jzyunqi-interceptors
+[license-url]: https://github.com/afeiship/jzyunqi-interceptors/blob/master/LICENSE.txt
 
-[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/next-axios
-[size-url]: https://github.com/afeiship/next-axios/blob/master/dist/next-axios.min.js
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/jzyunqi-interceptors
+[size-url]: https://github.com/afeiship/jzyunqi-interceptors/blob/master/dist/jzyunqi-interceptors.min.js
 
-[download-image]: https://img.shields.io/npm/dm/@jswork/next-axios
-[download-url]: https://www.npmjs.com/package/@jswork/next-axios
+[download-image]: https://img.shields.io/npm/dm/@jswork/jzyunqi-interceptors
+[download-url]: https://www.npmjs.com/package/@jswork/jzyunqi-interceptors
