@@ -20,12 +20,12 @@
  * 2. 字段 value: join(',')
  */
 
-export default function suffixArrayInterceptor(inData: any): any {
+export default function suffixArray(inData: any): any {
   const { when, data } = inData;
-  if (typeof when !== 'function') return console.warn('when must be a function'), inData;
+  if (typeof when !== 'function') inData;
   if (when(inData)) {
     nx.deepEach(data, (key, value, target) => {
-      if (key.endsWith('Array')) {
+      if (String(key).endsWith('Array')) {
         if (Array.isArray(value) && value.every((item) => typeof item !== 'object')) {
           target[key] = value.join(',');
         }

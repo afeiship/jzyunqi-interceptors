@@ -20,20 +20,23 @@
 import nx from '@jswork/next';
 import '@jswork/next-deep-each';
 
-export default function suffixArrayInterceptor(data: any): any {
-  const { config, ...response } = data;
+export default function suffixArray(inData: any): any {
+  const { config, ...response } = inData;
   const { when } = config;
-  if (typeof when !== 'function') return console.warn('when must be a function'), data;
-  if (when(data)) {
+  if (typeof when !== 'function') inData;
+  if (when(inData)) {
     nx.deepEach(response, (key, value, target) => {
       if (typeof value === 'string') {
         if (key.endsWith('Array')) {
-          target[key] = value.split(',');
-        } else if (key.endsWith('IdArray')) {
-          target[key] = value.split(',').map((item) => Number(item));
+          const aryValue = value.split(',');
+          target[key] = aryValue;
+
+          if (key.endsWith('IdArray')) {
+            target[key] = aryValue.map((item) => Number(item));
+          }
         }
       }
     });
   }
-  return data;
+  return inData;
 }

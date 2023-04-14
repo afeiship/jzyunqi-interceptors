@@ -1,7 +1,39 @@
-import fn from '../src';
+import suffixArrayRequest from '../src/interceptors/request/suffix-array';
+import suffixArrayResponse from '../src/interceptors/response/suffix-array';
 
 describe('api.basic', () => {
-  test('normail single value case', () => {
-    expect(fn({ rel: true })).toBe(undefined);
+  test('test suffix-array resposne interceptor', () => {
+    const mockResponse = {
+      config: {
+        when: () => true,
+      },
+      data: {
+        imgArray: 'a.jpg,3.png,4.gif',
+        itemIdArray: '1,2,3',
+      },
+    };
+
+    const res = suffixArrayResponse(mockResponse);
+    expect(res.data).toEqual({
+      imgArray: ['a.jpg', '3.png', '4.gif'],
+      itemIdArray: [1, 2, 3],
+    });
+  });
+
+  test('test suffix-array request interceptor', () => {
+    const mockRequest = {
+      otherProps: null,
+      when: () => true,
+      data: {
+        imgArray: ['a.jpg', '3.png', '4.gif'],
+        itemIdArray: [1, 2, 3],
+      },
+    };
+
+    const res = suffixArrayRequest(mockRequest);
+    expect(res.data).toEqual({
+      imgArray: 'a.jpg,3.png,4.gif',
+      itemIdArray: '1,2,3',
+    });
   });
 });
