@@ -15,7 +15,17 @@ npm install @jswork/jzyunqi-interceptors
 ```js
 import jzyunqiInterceptors from '@jswork/jzyunqi-interceptors';
 
-// usage goes here.
+// usage
+const opts = {
+  interceptors: [
+    ...jzyunqiInterceptors,
+    { type: 'response', fn: 'xxx' }
+  ]
+};
+
+httpSchema({
+  // ...
+}, opts);
 ```
 
 ## license
