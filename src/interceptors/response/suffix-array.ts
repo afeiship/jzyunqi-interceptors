@@ -20,23 +20,21 @@
 import nx from '@jswork/next';
 import '@jswork/next-deep-each';
 
-export default function suffixArray(inData: any): any {
-  const { config, ...response } = inData;
-  const { when } = config;
-  if (typeof when !== 'function') inData;
-  if (when(inData)) {
-    nx.deepEach(response, (key, value, target) => {
-      if (typeof value === 'string') {
-        if (key.endsWith('Array')) {
-          const aryValue = value.split(',');
-          target[key] = aryValue;
+export default function suffixArray(options: any): any {
+  nx.deepEach(options.data, (key, value, target) => {
+    if (typeof value === 'string') {
+      if (key.endsWith('Array')) {
+        const aryValue = value.split(',');
+        target[key] = aryValue;
 
-          if (key.endsWith('IdArray')) {
-            target[key] = aryValue.map((item) => Number(item));
-          }
+        if (key.endsWith('IdArray')) {
+          target[key] = aryValue.map((item) => {
+            const num = Number(item);
+            return isNaN(num) ? item : num;
+          });
         }
       }
-    });
-  }
-  return inData;
+    }
+  });
+  return options;
 }

@@ -4,9 +4,6 @@ import suffixArrayResponse from '../src/interceptors/response/suffix-array';
 describe('api.basic', () => {
   test('test suffix-array resposne interceptor', () => {
     const mockResponse = {
-      config: {
-        when: () => true,
-      },
       data: {
         imgArray: 'a.jpg,3.png,4.gif',
         itemIdArray: '1,2,3',
@@ -23,7 +20,6 @@ describe('api.basic', () => {
   test('test suffix-array request interceptor', () => {
     const mockRequest = {
       otherProps: null,
-      when: () => true,
       data: {
         imgArray: ['a.jpg', '3.png', '4.gif'],
         itemIdArray: [1, 2, 3],
