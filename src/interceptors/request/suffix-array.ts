@@ -19,6 +19,8 @@
  * 1. 字段 key 不变
  * 2. 字段 value: join(',')
  */
+import nx from '@jswork/next';
+import '@jswork/next-deep-each';
 
 export default function suffixArray(options: any): any {
   const { data } = options;
