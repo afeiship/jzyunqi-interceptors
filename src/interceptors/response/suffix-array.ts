@@ -24,14 +24,17 @@ export default function suffixArray(options: any): any {
   nx.deepEach(options.data, (key, value, target) => {
     if (typeof value === 'string') {
       if (key.endsWith('Array')) {
-        const aryValue = value.split(',');
-        target[key] = aryValue;
-
-        if (key.endsWith('IdArray')) {
-          target[key] = aryValue.map((item) => {
-            const num = Number(item);
-            return isNaN(num) ? item : num;
-          });
+        if (value === '') {
+          target[key] = [];
+        } else {
+          const aryValue = value.split(',');
+          target[key] = aryValue;
+          if (key.endsWith('IdArray')) {
+            target[key] = aryValue.map((item) => {
+              const num = Number(item);
+              return isNaN(num) ? item : num;
+            });
+          }
         }
       }
     }

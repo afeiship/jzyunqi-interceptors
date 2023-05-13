@@ -32,4 +32,19 @@ describe('api.basic', () => {
       itemIdArray: '1,2,3',
     });
   });
+
+  test('test suffix-array response with empty should be []', () => {
+    const mockResponse = {
+      data: {
+        imgArray: '',
+        itemIdArray: '',
+      },
+    };
+
+    const res = suffixArrayResponse(mockResponse);
+    expect(res.data).toEqual({
+      imgArray: [],
+      itemIdArray: [],
+    });
+  });
 });
