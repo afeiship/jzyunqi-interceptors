@@ -1,5 +1,6 @@
 import suffixArrayRequest from '../src/interceptors/request/suffix-array';
 import suffixArrayResponse from '../src/interceptors/response/suffix-array';
+import removeSpecialRequest from '../src/interceptors/request/remove-special';
 
 describe('api.basic', () => {
   test('test suffix-array resposne interceptor', () => {
@@ -45,6 +46,23 @@ describe('api.basic', () => {
     expect(res.data).toEqual({
       imgArray: [],
       itemIdArray: [],
+    });
+  });
+
+  test('remove special request interceptor', () => {
+    const mockResponse = {
+      data: {
+        key1: 'value1',
+        __key1__: 'special value',
+        key2: 'value2',
+        __key2__: 'another special value',
+      },
+    };
+
+    const res = removeSpecialRequest(mockResponse);
+    expect(res.data).toEqual({
+      key1: 'value1',
+      key2: 'value2',
     });
   });
 });
