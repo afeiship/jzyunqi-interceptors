@@ -53,6 +53,7 @@ describe('api.basic', () => {
   test('remove special request interceptor', () => {
     const mockResponse = {
       data: {
+        0: '12313',
         key1: 'value1',
         __key1__: 'special value',
         key2: 'value2',
@@ -62,11 +63,11 @@ describe('api.basic', () => {
 
     const res = removeSpecialRequest(mockResponse);
     expect(res.data).toEqual({
+      0: '12313',
       key1: 'value1',
       key2: 'value2',
     });
   });
-
 
   test('weibo normalize response interceptor', () => {
     const mockResponse = {
