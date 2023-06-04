@@ -6,7 +6,7 @@ export default function removeSpecial(options: any): any {
   if (!data || typeof data !== 'object') return options;
 
   nx.deepEach(data, (key, value, target) => {
-    if (key.startsWith('__') && key.endsWith('__')) {
+    if (typeof key === 'string' && key.startsWith('__') && key.endsWith('__')) {
       delete target[key];
     }
   });
