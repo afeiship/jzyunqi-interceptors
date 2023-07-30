@@ -1,6 +1,6 @@
 {
   "name": "@jswork/jzyunqi-interceptors",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Interceptors for jzyunqi/yw.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
